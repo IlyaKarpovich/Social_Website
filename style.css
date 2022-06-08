@@ -2,14 +2,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root{
-    --color-white: hsl(252, 30%, 100%);
-    --color-light: hsl(252, 30%, 95%);
-    --color-gray: hsl(252, 15%, 65%);
-    --color-primary: hsl(252, 75%, 60%);
+    --primary-color-hue:252;
+    --dark-color-lightness:17%;
+    --light-color-lightness:95%;
+    --white-color-lightness:100%;
+    --color-white: hsl(252, 30%, var(--white-color-lightness));
+    --color-light: hsl(252, 30%, var(--light-color-lightness));
+    --color-gray: hsl(var(--primary-color-hue), 15%, 65%);
+    --color-primary: hsl(var(--primary-color-hue), 75%, 60%);
     --color-secondary: hsl(252, 100%, 90%);
     --color-success: hsl(120, 95%, 65%);
     --color-danger: hsl(0, 95%, 65%);
-    --color-dark: hsl(252, 30%, 17%);
+    --color-dark: hsl(252, 30%, var(--dark-color-lightness));
     --color-black: hsl(252, 30%, 10%);
 
     --border-radius: 2rem;
@@ -139,7 +143,7 @@ width: 100%;
 .left .sidebar .menu_item{
     display: flex;
     align-items: center;
-    height: 4rem;
+    height: 3.8rem;
     cursor: pointer;
     transition: all .3s ease;
     position: relative;
@@ -167,6 +171,7 @@ width: 100%;
 .left .sidebar h3{
     margin-left: 1.5rem;
     font-size: 1rem;
+    color: var(--color-dark);
 }
 .left .sidebar .active{
     background: var(--color-light);
@@ -442,4 +447,200 @@ main .container .right{
 .right .request .action{
     display: flex;
     gap: 1rem;
+}
+/* Theme custom */
+.customize_theme{
+    background: rgba(255, 255, 255, 0.5);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    display: none;
+}
+.customize_theme .card{
+    background: var(--color-white);
+    padding: 3rem;
+    border-radius: var(--card-border-radius);
+    width: 50%;
+    box-shadow: 0 0 1rem var(--color-primary);
+}
+/* font-size */
+.customize_theme .font_size{
+    margin-top: 5rem;
+}
+.customize_theme .font_size > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--border-radius);
+}
+.customize_theme .choose_size{
+    background: var(--color-secondary);
+    height: 0.3rem;
+    width: 100%;
+    margin: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.customize_theme .choose_size span{
+    width: 1rem;
+    height: 1rem;
+    background: var(--color-secondary);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.customize_theme .choose_size span.active{
+    background: var(--color-primary);
+}
+.customize_theme .color{
+    margin-top: 2rem;
+}
+.customize_theme .choose_color{
+    background: var(--color-light);
+    padding: var(--search-padding);
+    border-radius: var(--card-border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.customize_theme .choose_color span{
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+}
+.customize_theme .choose_color span:nth-child(1){
+    background: hsl(252, 75%, 60%);
+}
+.customize_theme .choose_color span:nth-child(2){
+    background: hsl(52, 75%, 60%);
+}
+.customize_theme .choose_color span:nth-child(3){
+    background: hsl(352, 75%, 60%);
+}
+.customize_theme .choose_color span:nth-child(4){
+    background: hsl(152, 75%, 60%);
+}
+.customize_theme .choose_color span:nth-child(5){
+    background: hsl(202, 75%, 60%);
+}
+.customize_theme .choose_color span.active{
+    border: 5px solid white;
+}
+/* Background */
+.customize_theme .background{
+    margin-top: 2rem;
+}
+.customize_theme .choose_bg{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+.customize_theme .choose_bg > div{
+    padding: var(--card-padding);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 0.4rem;
+    cursor: pointer;
+}
+.customize_theme .choose_bg > div.active{
+    border: 2px solid var(--color-primary);
+}
+.customize_theme .choose_bg .bg_1{
+    background: white;
+    color: black;
+}
+.customize_theme .choose_bg .bg_2{
+    background: hsl(252, 30%, 17%);
+    color: #fff;
+}
+.customize_theme .choose_bg .bg_3{
+    background: hsl(252, 30%, 10%);
+    color: #fff;
+}
+.customize_theme .choose_bg > div span{
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid var(--color-gray);
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+/* Media small laptops and tablets */
+@media screen and (max-width: 1200px){
+.container{
+    width: 96%;
+}
+main .container{
+    grid-template-columns: 5rem auto 30vw;
+    gap: 1rem;
+}
+.left{
+    width: 5rem;
+    z-index: 5;
+}
+main .container .left .profile {
+    display: none;
+}
+.sidebar h3{
+    display: none;
+}
+.left .btn{
+    display: none;
+}
+.customize_theme .card{
+    width: 80vw;
+}
+}
+
+/* Media small tablets and mobile phones */
+@media screen and (max-width: 992px) {
+    nav .search_bar{
+        display: none;
+    }
+    main .container{
+        grid-template-columns: 0 auto 5rem;
+        gap: 0;
+    }
+    main .container .left{
+        grid-column: 3/4;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+    /* Notification popup */
+    .left .notifications_popup{
+        position: absolute;
+        left: -20rem;
+        width: 20rem;
+    }
+    .left .notifications_popup::before{
+        display:flex;
+        top: 1.3rem;
+        left: calc(20rem - 0.6rem);
+        display: block;
+    }
+    /* main .container .left .sidebar > div h3{
+        display: none;
+    } */
+    main .container .middle{
+        grid-column: 1/3;
+    }
+    main .container .right{
+        display: none;
+    }
+    .customize_theme .card{
+        width: 92vw;
+    }
 }
